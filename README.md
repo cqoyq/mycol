@@ -1,37 +1,26 @@
-# mycol
+# mycol guide
 
-> An awesome Kibana plugin
+This kibana plug-in can define periodic tasks, and determine whether to trigger response operations based on conditions after the task is executed.
+Note that the current operation only supports webhook and Kibana version 7.0.1.
 
----
+# Plug-in compilation preconditions
+- Install plug-in dependencies.
+  `cd /yourpath/kibana-extra/mycol`
+  `npm install node-schedule`
+- Once you have completed install, use the following yarn scripts.
+  `yarn kbn bootstrap`
 
-## development
+# Debug mycol plug-in
+In the mycol plug-in path, execute the command.
+  `cd /yourpath/kibana-extra/mycol`
+  `yarn start`
 
-See the [kibana contributing guide](https://github.com/elastic/kibana/blob/master/CONTRIBUTING.md) for instructions setting up your development environment. Once you have completed that, use the following yarn scripts.
+# Plug-in compilation
+- Execute the command.
+  `yarn build`
+- After successful compilation, the plug-in generation path is `/yourpath/kibana-extra/mycol/build`.
 
-  - `yarn kbn bootstrap`
-
-    Install dependencies and crosslink Kibana and all projects/plugins.
-
-    > ***IMPORTANT:*** Use this script instead of `yarn` to install dependencies when switching branches, and re-run it whenever your dependencies change.
-
-  - `yarn start`
-
-    Start kibana and have it include this plugin. You can pass any arguments that you would normally send to `bin/kibana`
-
-      ```
-      yarn start --elasticsearch.hosts http://localhost:9220
-      ```
-
-  - `yarn build`
-
-    Build a distributable archive of your plugin.
-
-  - `yarn test:browser`
-
-    Run the browser tests in a real web browser.
-
-  - `yarn test:server`
-
-    Run the server tests using mocha.
-
-For more information about any of these commands run `yarn ${task} --help`. For a full list of tasks checkout the `package.json` file, or run `yarn run`.
+# Install plug-in.
+In the kibana installation path, execute the command.
+  `cd /yourpath/kibana`
+  `bin/kibana-plugin install file:///yourpath/kibana-extra/mycol/build/mycol-7.0.1.zip`
